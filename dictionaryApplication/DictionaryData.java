@@ -1,10 +1,18 @@
 // Enum to store the dictionary data
-enum DictionaryEntry {
+enum DictionaryData {
     ARROW_NOUN_1("Arrow", "noun", "Here is one arrow: <IMG> -=>> </IMG>"),
     BOOK_NOUN_1("book", "noun", "A set of pages."),
     BOOK_NOUN_2("book", "noun", "A written work published in printed or electronic form."),
     BOOK_VERB_1("book", "verb", "To arrange for someone to have a seat on a plane."),
     BOOK_VERB_2("book", "verb", "To arrange something on a particular date."),
+    DISTINCT_ADJ_1("Distinct", "adjective", "Familiar. Worked in Java."),
+    DISTINCT_ADJ_2("Distinct", "adjective", "Unique. No duplicates. Clearly different or of a different kind."),
+    DISTINCT_ADV("Distinct", "adverb", "Uniquely. Written \"distinctly\"."),
+    DISTINCT_NOUN_1("Distinct", "noun", "A keyword in this assignment."),
+    DISTINCT_NOUN_2("Distinct", "noun", "A keyword in this assignment."),
+    DISTINCT_NOUN_3("Distinct", "noun", "A keyword in this assignment."),
+    DISTINCT_NOUN_4("Distinct", "noun", "An advanced search option."),
+    DISTINCT_NOUN_5("Distinct", "noun", "Distinct is a parameter in this assignment."),
     PLACEHOLDER_ADJECTIVE_1("placeholder", "adjective", "To be updated..."),
     PLACEHOLDER_ADVERB_1("placeholder", "adverb", "To be updated..."),
     PLACEHOLDER_CONJUNCTION_1("placeholder", "conjunction", "To be updated..."),
@@ -27,7 +35,7 @@ enum DictionaryEntry {
     private final String partOfSpeech;
     private final String definition;
 
-    DictionaryEntry(String keyword, String partOfSpeech, String definition) {
+    DictionaryData(String keyword, String partOfSpeech, String definition) {
         this.keyword = keyword;
         this.partOfSpeech = partOfSpeech;
         this.definition = definition;
@@ -43,5 +51,9 @@ enum DictionaryEntry {
 
     public String getDefinition() {
         return definition;
+    }
+    @Override
+    public String toString() {
+        return this.keyword + " [" + this.partOfSpeech + "]" + " : " + this.definition;
     }
 }
