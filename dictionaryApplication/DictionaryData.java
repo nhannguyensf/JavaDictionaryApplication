@@ -1,3 +1,4 @@
+// Enum to store the dictionary data
 enum DictionaryEntry {
     ARROW_NOUN_1("Arrow", "noun", "Here is one arrow: <IMG> -=>> </IMG>"),
     BOOK_NOUN_1("book", "noun", "A set of pages."),
