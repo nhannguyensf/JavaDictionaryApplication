@@ -16,10 +16,10 @@ public class Main {
                 System.out.println("----- THANK YOU -----");
                 break;
             }
-            if (userInput.equals("!help")) {
-                System.out.println("PARAMETER HOW-TO, please enter:\n" +
+            if ((userInput.equals("!help")) || (userInput.matches("\\s*|\\u0000"))) {
+                System.out.println("|\n PARAMETER HOW-TO, please enter:\n" +
                         "1. A search key -then 2. An optional part of speech -then\n" +
-                        "3. An optional 'distinct' -then 4. An optional 'reverse'");
+                        "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
                 searchCount++;
                 continue;
             }
@@ -28,7 +28,7 @@ public class Main {
             String searchKey = inputParts[0];
             String partOfSpeech = inputParts.length > 1 ? inputParts[1] : null;
 
-            List<DictionaryData> matchingEntries = dictionary.search(searchKey, partOfSpeech);
+            List<EnumDictionaryData> matchingEntries = dictionary.search(searchKey, partOfSpeech);
             dictionary.displayResults(matchingEntries);
             searchCount++;
         }

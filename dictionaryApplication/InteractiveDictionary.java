@@ -2,7 +2,7 @@ import java.util.*;
 
 // Interactive dictionary class
 public class InteractiveDictionary {
-    private final Map<String, List<DictionaryData>> dictionary;
+    private final Map<String, List<EnumDictionaryData>> dictionary;
 
     public InteractiveDictionary() {
         dictionary = new HashMap<>();
@@ -11,7 +11,7 @@ public class InteractiveDictionary {
 
     // Load dictionary data from the enum
     private void loadDictionaryData() {
-        for (DictionaryData data : DictionaryData.values()) {
+        for (EnumDictionaryData data : EnumDictionaryData.values()) {
             String keyword = data.getKeyword().toLowerCase();
             if (!dictionary.containsKey(keyword)) {
                 dictionary.put(keyword, new ArrayList<>());
@@ -21,36 +21,35 @@ public class InteractiveDictionary {
     }
 
     // Search the dictionary for matching entries based on the search key and part of speech
-    public List<DictionaryData> search(String searchKey, String partOfSpeech) {
-        List<DictionaryData> matchingEntries = new ArrayList<>();
+    public List<EnumDictionaryData> search(String searchKey, String partOfSpeech) {
+        List<EnumDictionaryData> matchingEntries = new ArrayList<>();
         String searchKeyLower = searchKey.toLowerCase();
 
         if (dictionary.containsKey(searchKeyLower)) {
-            List<DictionaryData> entries = dictionary.get(searchKeyLower);
+            List<EnumDictionaryData> entries = dictionary.get(searchKeyLower);
             if (partOfSpeech == null) {
                 matchingEntries.addAll(entries);
             } else {
-                for (DictionaryData entry : entries) {
+                for (EnumDictionaryData entry : entries) {
                     if (entry.getPartOfSpeech().equalsIgnoreCase(partOfSpeech)) {
                         matchingEntries.add(entry);
                     }
                 }
             }
-        } else {
-            System.out.println("No matching entries found.");
         }
-
         return matchingEntries;
     }
 
     // Display the search results
-    public void displayResults(List<DictionaryData> entries) {
+    public void displayResults(List<EnumDictionaryData> entries) {
         if (entries.isEmpty()) {
-            System.out.println("No matching entries found.");
+            System.out.println("<NOT FOUND> To be considered for the next release. Thank you.");
         } else {
-            for (DictionaryData entry : entries) {
+            System.out.println("|");
+            for (EnumDictionaryData entry : entries) {
                 System.out.println(entry.toString());
             }
+            System.out.println("|");
         }
     }
 }
