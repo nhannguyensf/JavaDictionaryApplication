@@ -7,6 +7,10 @@ public class Main {
         InteractiveDictionary dictionary = new InteractiveDictionary();
         Scanner scanner = new Scanner(System.in);
 
+        String helpMessage = ("|\n PARAMETER HOW-TO, please enter:\n" +
+                "1. A search key -then 2. An optional part of speech -then\n" +
+                "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
+
         int searchCount = 1;
         while (true) {
             System.out.print("Search [" + searchCount + "]: ");
@@ -16,10 +20,8 @@ public class Main {
                 System.out.println("----- THANK YOU -----");
                 break;
             }
-            if ((userInput.equals("!help")) || (userInput.matches("\\s*|\\u0000"))) {
-                System.out.println("|\n PARAMETER HOW-TO, please enter:\n" +
-                        "1. A search key -then 2. An optional part of speech -then\n" +
-                        "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
+            if ((userInput.equalsIgnoreCase("!help")) || (userInput.matches("\\s*|\\u0000"))) {
+                System.out.println(helpMessage);
                 searchCount++;
                 continue;
             }
