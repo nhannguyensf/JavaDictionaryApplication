@@ -30,7 +30,7 @@ public class Main {
             String searchKey = inputParts[0];
             String partOfSpeech = inputParts.length > 1 ? inputParts[1] : null;
 
-            List<EnumDictionaryData> matchingEntries = dictionary.search(searchKey, partOfSpeech);
+            List<String> matchingEntries = dictionary.search(searchKey, partOfSpeech, false, true);
             dictionary.displayResults(matchingEntries);
             searchCount++;
         }
