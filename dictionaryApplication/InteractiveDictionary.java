@@ -50,7 +50,10 @@ public class InteractiveDictionary {
     // Display the search results
     public void displayResults(List<String> entries) {
         if (entries.isEmpty()) {
-            System.out.println("<NOT FOUND> To be considered for the next release. Thank you.");
+            System.out.println("|\n <NOT FOUND> To be considered for the next release. Thank you.\n|");
+            System.out.println("|\n PARAMETER HOW-TO, please enter:\n" +
+                    "1. A search key -then 2. An optional part of speech -then\n" +
+                    "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
         } else {
             System.out.println("|");
             for (String entry : entries) {
