@@ -17,26 +17,27 @@ public class InteractiveDictionary {
                 dictionary.put(keyword, new ArrayList<>());
             }
             dictionary.get(keyword).add(data);
+            System.out.println(dictionary.get(keyword));
+            System.out.println();
         }
     }
 
     // Search the dictionary for matching entries based on the search key and part of speech
-    public List<EnumDictionaryData> search(String searchKey, String partOfSpeech) {
+    public List<EnumDictionaryData> search(String searchKey, String partOfSpeech, boolean isDistinct, boolean isReverse) {
         List<EnumDictionaryData> matchingEntries = new ArrayList<>();
         String searchKeyLower = searchKey.toLowerCase();
 
         if (dictionary.containsKey(searchKeyLower)) {
             List<EnumDictionaryData> entries = dictionary.get(searchKeyLower);
-            if (partOfSpeech == null) {
-                matchingEntries.addAll(entries);
-            } else {
+//            if (partOfSpeech == null) {
+//                matchingEntries.addAll(entries);
+//            } else {
                 for (EnumDictionaryData entry : entries) {
-                    if (entry.getPartOfSpeech().equalsIgnoreCase(partOfSpeech)) {
+                    if (entry.getPartOfSpeech().equalsIgnoreCase(option)) {
                         matchingEntries.add(entry);
                     }
                 }
             }
-        }
         return matchingEntries;
     }
 
