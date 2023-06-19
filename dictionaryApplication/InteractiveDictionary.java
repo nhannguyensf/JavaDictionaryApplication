@@ -23,13 +23,11 @@ public class InteractiveDictionary {
     // Search the dictionary for matching entries based on the search key and part of speech
     public List<String> search(String searchKey, String partOfSpeech, boolean isDistinct, boolean isReverse) {
         List<String> matchingEntries = new ArrayList<>();
-        String searchKeyLower = searchKey.toLowerCase();
-
-        if (dictionary.containsKey(searchKeyLower)) {
-            List<EnumDictionaryData> entries = dictionary.get(searchKeyLower);
+        if (dictionary.containsKey(searchKey)) {
+            List<EnumDictionaryData> entries = dictionary.get(searchKey);
             if (partOfSpeech == null) {
                 for (EnumDictionaryData entry : entries) {
-                    matchingEntries.add(entries.toString());
+                    matchingEntries.add(entry.toString());
                 }
             } else {
                 for (EnumDictionaryData entry : entries) {
