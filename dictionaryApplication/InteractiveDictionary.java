@@ -11,13 +11,22 @@ public class InteractiveDictionary {
 
     // Load dictionary data from the enum
     private void loadDictionaryData() {
+        System.out.println("! Loading data...");
+        int wordsCount = 0;
+        int definitionCount = 0;
         for (EnumDictionaryData data : EnumDictionaryData.values()) {
             String keyword = data.getKeyword().toLowerCase();
+            definitionCount++;
             if (!dictionary.containsKey(keyword)) {
                 dictionary.put(keyword, new ArrayList<>());
+                wordsCount++;
             }
             dictionary.get(keyword).add(data);
         }
+        System.out.println("! Loading completed...\n" +
+                           "===== DICTIONARY 340 JAVA =====\n" +
+                           "----- Keywords: " + wordsCount+ "\n" +
+                           "----- Definitions: " + definitionCount +"\n");
     }
 
     // Search the dictionary for matching entries based on the search key and part of speech
