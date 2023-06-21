@@ -11,13 +11,22 @@ public class InteractiveDictionary {
 
     // Load dictionary data from the enum
     private void loadDictionaryData() {
+        System.out.println("! Loading data...");
+        int wordsCount = 0;
+        int definitionCount = 0;
         for (EnumDictionaryData data : EnumDictionaryData.values()) {
             String keyword = data.getKeyword().toLowerCase();
+            definitionCount++;
             if (!dictionary.containsKey(keyword)) {
                 dictionary.put(keyword, new ArrayList<>());
+                wordsCount++;
             }
             dictionary.get(keyword).add(data);
         }
+        System.out.println("! Loading completed...\n" +
+                           "===== DICTIONARY 340 JAVA =====\n" +
+                           "----- Keywords: " + wordsCount+ "\n" +
+                           "----- Definitions: " + definitionCount +"\n");
     }
 
     // Search the dictionary for matching entries based on the search key and part of speech
@@ -50,7 +59,10 @@ public class InteractiveDictionary {
     // Display the search results
     public void displayResults(List<String> entries) {
         if (entries.isEmpty()) {
-            System.out.println("<NOT FOUND> To be considered for the next release. Thank you.");
+            System.out.println("|\n <NOT FOUND> To be considered for the next release. Thank you.\n|");
+            System.out.println("|\n PARAMETER HOW-TO, please enter:\n" +
+                    "1. A search key -then 2. An optional part of speech -then\n" +
+                    "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
         } else {
             System.out.println("|");
             for (String entry : entries) {
