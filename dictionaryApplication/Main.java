@@ -6,7 +6,16 @@ public class Main {
     public static void main(String[] args) {
         InteractiveDictionary dictionary = new InteractiveDictionary();
         Scanner scanner = new Scanner(System.in);
-
+        String helpMessage = ("|\n PARAMETER HOW-TO, please enter:\n" +
+                "1. A search key -then 2. An optional part of speech -then\n" +
+                "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
+        String wrongParameter = ("|\n" +
+                "<The entered 2nd parameter 'ok' is NOT a part of speech.>\n" +
+                "<The entered 2nd parameter 'ok' is NOT 'distinct'.>\n" +
+                "<The entered 2nd parameter 'ok' is NOT 'reverse'.>\n" +
+                "<The entered 2nd parameter 'ok' was disregarded.>\n" +
+                "<The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>\n" +
+                "|");
         String partOfSpeech = null;
         boolean isDistinct = false;
         boolean isReverse = false;
@@ -20,61 +29,59 @@ public class Main {
                 System.out.println("----- THANK YOU -----");
                 break;
             }
-            if ((userInput.equals("!help")) || (userInput.matches("\\s*|\\u0000"))) {
-                System.out.println("|\n PARAMETER HOW-TO, please enter:\n" +
-                        "1. A search key -then 2. An optional part of speech -then\n" +
-                        "3. An optional 'distinct' -then 4. An optional 'reverse'\n|");
+            String[] inputParts = userInput.split("\\s+");
+            if ((userInput.equalsIgnoreCase("!help")) || (userInput.matches("\\s*|\\u0000")) || (inputParts.length > 4)) {
+                System.out.println(helpMessage);
                 searchCount++;
                 continue;
             }
-
-            String[] inputParts = userInput.split("\\s+");
             String searchKey = inputParts[0];
+            boolean doneCatching = false;
             switch (inputParts.length) {
                 case 2:
-                        for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
-                            if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
-                                partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
-                            } else if (inputParts[1].equalsIgnoreCase("distinct")) {
-                                isDistinct = true;
-                            } else if (inputParts[1].equalsIgnoreCase("reverse")) {
-                                isReverse = true;
-                            }
-                        }
-                    }
-                case 3:
                     for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
                         if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
                             partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
+                            doneCatching = true;
                         } else if (inputParts[1].equalsIgnoreCase("distinct")) {
                             isDistinct = true;
+                            doneCatching = true;
                         } else if (inputParts[1].equalsIgnoreCase("reverse")) {
                             isReverse = true;
+                            doneCatching = true;
+                        } else {
+                            System.out.println(wrongParameter);
+                        }
+                        if (doneCatching) {
+                            break;
                         }
                     }
+                case 3:
 
                 case 4:
-            }
-            partOfSpeech = inputParts.length > 1 ? inputParts[1] : null;
-            if (inputParts.length > 1) {
-                for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
-                    if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
-                        partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
-                        if (inputParts[2].equalsIgnoreCase("distinct")) {
-                            isDistinct = true;
+                    for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
+                        if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
+                            partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
+                            break;
                         }
-                        isReverse = inputParts[2].equalsIgnoreCase("reverse");
-
-                        break;
-                    } else if (inputParts[1].equalsIgnoreCase("distinct"))
+                    }
+                    if (inputParts[2].equalsIgnoreCase("distinct")) {
                         isDistinct = true;
-                }
+                    }
+                    if (inputParts[3].equalsIgnoreCase("reverse")) {
+                        isReverse = true;
+                    } else {
+                        System.out.println(wrongParameter);
+                    }
+            }
 
-                isReverse = inputParts[2].equalsIgnoreCase("reverse");
-            List<EnumDictionaryData> matchingEntries = dictionary.search(searchKey, partOfSpeech, isDistinct, isReverse);
+
+            List<String> matchingEntries = dictionary.search(searchKey, partOfSpeech, isDistinct, isReverse);
             dictionary.displayResults(matchingEntries);
             searchCount++;
-            }
+            partOfSpeech = null;
+            isDistinct = false;
+            isReverse = false;
         }
 
         scanner.close();

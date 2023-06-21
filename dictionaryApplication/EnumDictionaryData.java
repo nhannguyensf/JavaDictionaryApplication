@@ -26,9 +26,16 @@ enum EnumDictionaryData {
     REVERSE_NOUN_1("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "A dictionary program's parameter."),
     REVERSE_NOUN_2("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "Change to opposite direction."),
     REVERSE_NOUN_3("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "The opposite."),
+    REVERSE_NOUN_4("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
+    REVERSE_NOUN_5("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
+    REVERSE_NOUN_6("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
+    REVERSE_NOUN_7("Reverse", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
     REVERSE_VERB_1("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "Change something to opposite."),
     REVERSE_VERB_2("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "Go back"),
-    REVERSE_VERB_3("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "Revoke ruling."),
+    REVERSE_VERB_3("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "Turn something inside out."),
+    REVERSE_VERB_4("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "Revoke ruling."),
+    REVERSE_VERB_5("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "To be updated..."),
+    REVERSE_VERB_6("Reverse", EnumPartOfSpeech.VERB.getPartOfSpeech(), "To be updated..."),
     ;
     private final String keyword;
     private final String partOfSpeech;
