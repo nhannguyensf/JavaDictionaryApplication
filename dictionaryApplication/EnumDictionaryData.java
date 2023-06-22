@@ -1,5 +1,5 @@
 // Enum to store the dictionary data
-enum EnumDictionaryData {
+public enum EnumDictionaryData { //can try another data type for enum data and constructor later
     ARROW_NOUN_1("Arrow", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "Here is one arrow: <IMG> -=>> </IMG>"),
     BOOK_NOUN_1("Book", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "A set of pages."),
     BOOK_NOUN_2("Book", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "A written work published in printed or electronic form."),
@@ -14,10 +14,13 @@ enum EnumDictionaryData {
     DISTINCT_NOUN_4("Distinct", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "An advanced search option."),
     DISTINCT_NOUN_5("Distinct", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "Distinct is a parameter in this assignment."),
     PLACEHOLDER_ADJECTIVE_1("Placeholder", EnumPartOfSpeech.ADJECTIVE.getPartOfSpeech(), "To be updated..."),
+    PLACEHOLDER_ADJECTIVE_2("Placeholder", EnumPartOfSpeech.ADJECTIVE.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_ADVERB_1("Placeholder", EnumPartOfSpeech.ADVERB.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_CONJUNCTION_1("Placeholder", EnumPartOfSpeech.CONJUNCTION.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_INTERJECTION_1("Placeholder", EnumPartOfSpeech.INTERJECTION.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_NOUN_1("Placeholder", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
+    PLACEHOLDER_NOUN_2("Placeholder", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
+    PLACEHOLDER_NOUN_3("Placeholder", EnumPartOfSpeech.NOUN.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_PREPOSITION_1("Placeholder", EnumPartOfSpeech.PREPOSITION.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_PRONOUN_1("Placeholder", EnumPartOfSpeech.PRONOUN.getPartOfSpeech(), "To be updated..."),
     PLACEHOLDER_VERB_1("Placeholder", EnumPartOfSpeech.VERB.getPartOfSpeech(), "To be updated..."),
@@ -41,7 +44,7 @@ enum EnumDictionaryData {
     private final String partOfSpeech;
     private final String definition;
 
-    EnumDictionaryData(String keyword, String partOfSpeech, String definition) {
+    private EnumDictionaryData(String keyword, String partOfSpeech, String definition) {
         this.keyword = keyword;
         this.partOfSpeech = partOfSpeech;
         this.definition = definition;
