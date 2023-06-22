@@ -1,5 +1,5 @@
 // Enum for different parts of speech
-enum EnumPartOfSpeech {
+public enum EnumPartOfSpeech {
     NOUN("noun"),
     VERB("verb"),
     ADJECTIVE("adjective"),
@@ -11,7 +11,7 @@ enum EnumPartOfSpeech {
     ;
     private final String partOfSpeech;
 
-    EnumPartOfSpeech(String partOfSpeech) {
+    private EnumPartOfSpeech(String partOfSpeech) {
         this.partOfSpeech = partOfSpeech;
     }
 
