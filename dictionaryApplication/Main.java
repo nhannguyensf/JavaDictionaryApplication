@@ -62,9 +62,13 @@ public class Main {
                 }
             }
             if (inputParts.length >= 3) {
-                isDistinct = inputParts[2].equalsIgnoreCase("distinct");
-                isReverse = inputParts[2].equalsIgnoreCase("reverse");
-                if ((!isDistinct) && (!isReverse)) {
+                if (!isDistinct) {
+                    isDistinct = inputParts[2].equalsIgnoreCase("distinct");
+                }
+                if (!isReverse) {
+                    isReverse = inputParts[2].equalsIgnoreCase("reverse");
+                }
+                if ((!inputParts[2].equalsIgnoreCase("distinct")) && (!inputParts[2].equalsIgnoreCase("reverse"))) {
                     System.out.println("|\n" +
                             "<The entered 3nd parameter 'ok' is NOT 'distinct'.>\n" +
                             "<The entered 3nd parameter 'ok' is NOT 'reverse'.>\n" +
@@ -74,8 +78,10 @@ public class Main {
                 }
             }
             if (inputParts.length == 4) {
-                isReverse = inputParts[3].equalsIgnoreCase("reverse");
-                if (!(isReverse)) {
+                if (!isReverse) {
+                    isReverse = inputParts[3].equalsIgnoreCase("reverse");
+                }
+                if (!(inputParts[3].equalsIgnoreCase("reverse"))) {
                     System.out.println("|\n" +
                             "<The entered 4nd parameter 'ok' is NOT 'reverse'.>\n" +
                             "<The entered 4nd parameter 'ok' was disregarded.>\n" +
