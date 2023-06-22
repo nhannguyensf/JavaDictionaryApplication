@@ -53,7 +53,8 @@ public class InteractiveDictionary {
                             <The entered 2nd parameter '%s' is NOT 'reverse'.>
                             <The entered 2nd parameter '%s' was disregarded.>
                             <The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>
-                            |""", inputParts[1], inputParts[1], inputParts[1], inputParts[1]);
+                            |
+                            """, inputParts[1], inputParts[1], inputParts[1], inputParts[1]);
                 }
             }
             if (inputParts.length >= 3) {
@@ -70,7 +71,8 @@ public class InteractiveDictionary {
                             <The entered 3nd parameter '%s' is NOT 'reverse'.>
                             <The entered 3nd parameter '%s' was disregarded.>
                             <The 3nd parameter should be 'distinct' or 'reverse'.>
-                            |""", inputParts[2], inputParts[2], inputParts[2]);
+                            |
+                            """, inputParts[2], inputParts[2], inputParts[2]);
                 }
             }
             if (inputParts.length == 4) {
@@ -83,7 +85,8 @@ public class InteractiveDictionary {
                             <The entered 4nd parameter '%s' is NOT 'reverse'.>
                             <The entered 4nd parameter '%s' was disregarded.>
                             <The 4nd parameter should be 'reverse'.>
-                            |%n""", inputParts[3], inputParts[3]);
+                            |
+                            """, inputParts[3], inputParts[3]);
                 }
             }
 
