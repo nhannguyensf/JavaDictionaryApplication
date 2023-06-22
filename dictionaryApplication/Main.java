@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 // Main class to run the interactive dictionary
 public class Main {
+    public void wrongParameterNotification(String position, String inputWord) {
+        System.out.print("<The entered " + position + "parameter '" + inputWord + "' is NOT a part of speech.>");
+    }
+
     public static void main(String[] args) {
         InteractiveDictionary dictionary = new InteractiveDictionary();
         Scanner scanner = new Scanner(System.in);
@@ -35,46 +39,50 @@ public class Main {
                 searchCount++;
                 continue;
             }
+
             String searchKey = inputParts[0];
-            boolean doneCatching = false;
-            switch (inputParts.length) {
-                case 2:
-                    for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
-                        if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
-                            partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
-                            doneCatching = true;
-                        } else if (inputParts[1].equalsIgnoreCase("distinct")) {
-                            isDistinct = true;
-                            doneCatching = true;
-                        } else if (inputParts[1].equalsIgnoreCase("reverse")) {
-                            isReverse = true;
-                            doneCatching = true;
-                        } else {
-                            System.out.println(wrongParameter);
-                        }
-                        if (doneCatching) {
-                            break;
-                        }
-                    }
-                case 3:
 
-                case 4:
-                    for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
-                        if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
-                            partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
-                            break;
-                        }
+            if (inputParts.length >= 2) {
+                for (EnumPartOfSpeech enumPartOfSpeech : EnumPartOfSpeech.values()) {
+                    if (inputParts[1].equalsIgnoreCase(enumPartOfSpeech.getPartOfSpeech())) {
+                        partOfSpeech = enumPartOfSpeech.getPartOfSpeech();
+                        break;
                     }
-                    if (inputParts[2].equalsIgnoreCase("distinct")) {
-                        isDistinct = true;
-                    }
-                    if (inputParts[3].equalsIgnoreCase("reverse")) {
-                        isReverse = true;
-                    } else {
-                        System.out.println(wrongParameter);
-                    }
+                }
+                isDistinct = inputParts[1].equalsIgnoreCase("distinct");
+                isReverse = inputParts[1].equalsIgnoreCase("reverse");
+                if ((partOfSpeech == null) && (!isDistinct) && (!isReverse)) {
+                    System.out.println("|\n" +
+                            "<The entered 2nd parameter 'ok' is NOT a part of speech.>\n" +
+                            "<The entered 2nd parameter 'ok' is NOT 'distinct'.>\n" +
+                            "<The entered 2nd parameter 'ok' is NOT 'reverse'.>\n" +
+                            "<The entered 2nd parameter 'ok' was disregarded.>\n" +
+                            "<The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>\n" +
+                            "|");
+                }
             }
-
+            if (inputParts.length >= 3) {
+                isDistinct = inputParts[2].equalsIgnoreCase("distinct");
+                isReverse = inputParts[2].equalsIgnoreCase("reverse");
+                if ((!isDistinct) && (!isReverse)) {
+                    System.out.println("|\n" +
+                            "<The entered 3nd parameter 'ok' is NOT 'distinct'.>\n" +
+                            "<The entered 3nd parameter 'ok' is NOT 'reverse'.>\n" +
+                            "<The entered 3nd parameter 'ok' was disregarded.>\n" +
+                            "<The 3nd parameter should be 'distinct' or 'reverse'.>\n" +
+                            "|");
+                }
+            }
+            if (inputParts.length == 4) {
+                isReverse = inputParts[3].equalsIgnoreCase("reverse");
+                if (!(isReverse)) {
+                    System.out.println("|\n" +
+                            "<The entered 4nd parameter 'ok' is NOT 'reverse'.>\n" +
+                            "<The entered 4nd parameter 'ok' was disregarded.>\n" +
+                            "<The 4nd parameter should be 'reverse'.>\n" +
+                            "|");
+                }
+            }
 
             List<String> matchingEntries = dictionary.search(searchKey, partOfSpeech, isDistinct, isReverse);
             dictionary.displayResults(matchingEntries);
@@ -83,7 +91,7 @@ public class Main {
             isDistinct = false;
             isReverse = false;
         }
-
         scanner.close();
     }
 }
+
