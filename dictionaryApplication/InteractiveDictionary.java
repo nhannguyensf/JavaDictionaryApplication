@@ -67,10 +67,10 @@ public class InteractiveDictionary {
                 if ((!inputParts[2].equalsIgnoreCase("distinct")) && (!inputParts[2].equalsIgnoreCase("reverse"))) {
                     System.out.printf("""
                             |
-                            <The entered 3nd parameter '%s' is NOT 'distinct'.>
-                            <The entered 3nd parameter '%s' is NOT 'reverse'.>
-                            <The entered 3nd parameter '%s' was disregarded.>
-                            <The 3nd parameter should be 'distinct' or 'reverse'.>
+                            <The entered 3rd parameter '%s' is NOT 'distinct'.>
+                            <The entered 3rd parameter '%s' is NOT 'reverse'.>
+                            <The entered 3rd parameter '%s' was disregarded.>
+                            <The 3rd parameter should be 'distinct' or 'reverse'.>
                             |
                             """, inputParts[2], inputParts[2], inputParts[2]);
                 }
@@ -82,9 +82,9 @@ public class InteractiveDictionary {
                 if (!(inputParts[3].equalsIgnoreCase("reverse"))) {
                     System.out.printf("""
                             |
-                            <The entered 4nd parameter '%s' is NOT 'reverse'.>
-                            <The entered 4nd parameter '%s' was disregarded.>
-                            <The 4nd parameter should be 'reverse'.>
+                            <The entered 4th parameter '%s' is NOT 'reverse'.>
+                            <The entered 4th parameter '%s' was disregarded.>
+                            <The 4th parameter should be 'reverse'.>
                             |
                             """, inputParts[3], inputParts[3]);
                 }
